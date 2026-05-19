@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tickets Archive - Staff Chatbot Admin Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Tickets Archive</h1>
+    <p>View tickets that staff have already resolved.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="content.html">Content</a>
+    <a href="tickets.html">Tickets</a>
+    <a class="active" href="archive.html">Tickets Archive</a>
+  </nav>
+
+  <main>
+    <h2>Resolved Tickets</h2>
+    <p>
+      This page stores tickets that have already been reviewed and marked as resolved by staff.
+    </p>
+
+    <div class="box">
+      <h3>Filter Archive</h3>
+      <label for="archiveDepartmentFilter">Department</label>
+      <select id="archiveDepartmentFilter">
+        <option>All</option>
+        <option>Financial Aid</option>
+        <option>First Stop</option>
+        <option>Admission</option>
+        <option>Counseling</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ticket</th>
+          <th>Student</th>
+          <th>Department</th>
+          <th>Issue</th>
+          <th>Resolved By</th>
+          <th>Resolved Date</th>
+          <th>Resolution Notes</th>
+        </tr>
+      </thead>
+      <tbody id="archiveTable"></tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>Static prototype for discussion and research purposes.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
