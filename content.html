@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content - Staff Chatbot Admin Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Content Page</h1>
+    <p>Upload, label, and organize the information the chatbot is allowed to use.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="content.html">Content</a>
+    <a href="tickets.html">Tickets</a>
+    <a href="archive.html">Tickets Archive</a>
+  </nav>
+
+  <main>
+    <h2>Content Management</h2>
+    <p>
+      This page represents where staff would add approved chatbot information. Each item can be labeled by the type of information it contains.
+    </p>
+
+    <div class="page-note">
+      <strong>Demo behavior:</strong> Items added here are saved in your browser's local storage. They are not uploaded to a real server.
+    </div>
+
+    <div class="box">
+      <h3>Add Content</h3>
+      <form id="contentForm">
+        <label for="docTitle">Content Title</label>
+        <input id="docTitle" placeholder="Example: Financial Aid Contact Information" />
+
+        <label>Information Labels</label>
+        <p class="small-text">Select one or more categories that describe this content.</p>
+        <label><input type="checkbox" name="label" value="Financial Aid" /> Financial Aid</label>
+        <label><input type="checkbox" name="label" value="First Stop" /> First Stop</label>
+        <label><input type="checkbox" name="label" value="Admission" /> Admission</label>
+        <label><input type="checkbox" name="label" value="Counseling" /> Counseling</label>
+
+        <label for="docType">Content Type</label>
+        <select id="docType">
+          <option>FAQ / Office Info</option>
+          <option>Step-by-step Guide</option>
+          <option>Policy Document</option>
+          <option>Uploaded PDF</option>
+          <option>Website Text</option>
+        </select>
+
+        <label for="docStatus">Status</label>
+        <select id="docStatus">
+          <option>Draft</option>
+          <option>Needs Review</option>
+          <option>Published</option>
+        </select>
+
+        <label for="docNotes">Notes / Description</label>
+        <textarea id="docNotes" placeholder="Briefly describe what this content contains."></textarea>
+
+        <button class="primary" type="submit">Add Content</button>
+      </form>
+    </div>
+
+    <div class="box">
+      <h3>Filter Content</h3>
+      <label for="contentFilter">Show content labeled as:</label>
+      <select id="contentFilter">
+        <option>All</option>
+        <option>Financial Aid</option>
+        <option>First Stop</option>
+        <option>Admission</option>
+        <option>Counseling</option>
+      </select>
+    </div>
+
+    <h3>Content List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Labels</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Notes</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="contentTable"></tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>Static prototype for discussion and research purposes.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
