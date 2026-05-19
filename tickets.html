@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tickets - Staff Chatbot Admin Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Tickets Page</h1>
+    <p>View and respond to student questions escalated by the chatbot.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="content.html">Content</a>
+    <a class="active" href="tickets.html">Tickets</a>
+    <a href="archive.html">Tickets Archive</a>
+  </nav>
+
+  <main>
+    <h2>Active Tickets</h2>
+    <p>
+      This page shows questions that were escalated to staff because the chatbot should not answer directly or did not have enough confidence.
+    </p>
+
+    <div class="page-note">
+      <strong>Demo behavior:</strong> Resolving a ticket moves it to the Tickets Archive page using browser local storage.
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Open Tickets</h3>
+        <p class="big-number">3</p>
+        <p>Sample active tickets.</p>
+      </div>
+      <div class="card">
+        <h3>Main Reason</h3>
+        <p>Private or account-specific questions.</p>
+      </div>
+      <div class="card">
+        <h3>Staff Action</h3>
+        <p>Review, reply, then resolve.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Filter Tickets</h3>
+      <label for="ticketDepartmentFilter">Department</label>
+      <select id="ticketDepartmentFilter">
+        <option>All</option>
+        <option>Financial Aid</option>
+        <option>First Stop</option>
+        <option>Admission</option>
+        <option>Counseling</option>
+      </select>
+
+      <label for="ticketStatusFilter">Status</label>
+      <select id="ticketStatusFilter">
+        <option>All</option>
+        <option>Open</option>
+        <option>Pending</option>
+      </select>
+    </div>
+
+    <h3>Ticket List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Ticket</th>
+          <th>Student</th>
+          <th>Department</th>
+          <th>Issue</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="ticketsTable"></tbody>
+    </table>
+
+    <div class="box" id="ticketDetail">
+      <h3>Ticket Detail</h3>
+      <p>Select “View” on a ticket to see the transcript, AI summary, and response area.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Static prototype for discussion and research purposes.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
