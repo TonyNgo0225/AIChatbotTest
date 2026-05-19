@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff Chatbot Admin Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Staff Chatbot Admin Portal</h1>
+    <p>Static GitHub Pages prototype for managing a college website chatbot.</p>
+  </header>
+
+  <nav>
+    <a class="active" href="index.html">Home</a>
+    <a href="content.html">Content</a>
+    <a href="tickets.html">Tickets</a>
+    <a href="archive.html">Tickets Archive</a>
+  </nav>
+
+  <main>
+    <h2>What This Prototype Shows</h2>
+    <p>
+      This is a simple staff-facing website prototype. It is meant to show how employees could manage the backend of a chatbot that is embedded on the existing college website.
+    </p>
+
+    <div class="page-note">
+      <strong>Important:</strong> This is only a static demo. It does not connect to real student data, real AI, Microsoft login, or a database.
+    </div>
+
+    <div class="box">
+      <h3>Simple System Flow</h3>
+      <p><strong>Existing college website</strong> → students and parents ask questions through the chatbot.</p>
+      <p><strong>Chatbot backend</strong> → searches approved content and decides whether to answer or escalate.</p>
+      <p><strong>Staff admin portal</strong> → staff upload content, respond to tickets, and review resolved tickets.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Content Page</h3>
+        <p>Upload or add approved content and label it by department, such as Financial Aid, First Stop, Admission, or Counseling.</p>
+        <p><a href="content.html">Go to Content</a></p>
+      </div>
+
+      <div class="card">
+        <h3>Tickets Page</h3>
+        <p>View escalated student questions, read the AI summary, and respond or mark tickets as resolved.</p>
+        <p><a href="tickets.html">Go to Tickets</a></p>
+      </div>
+
+      <div class="card">
+        <h3>Tickets Archive</h3>
+        <p>Review tickets that staff have already handled and marked as resolved.</p>
+        <p><a href="archive.html">Go to Archive</a></p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Example Use Case</h3>
+      <p>A student asks: <strong>“Why did my financial aid disappear?”</strong></p>
+      <p>The chatbot should not guess because this may involve private student records.</p>
+      <p>Instead, the chatbot creates a ticket for staff to review.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Static prototype for discussion and research purposes.</p>
+  </footer>
+</body>
+</html>
