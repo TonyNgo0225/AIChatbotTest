@@ -3,69 +3,307 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Staff Chatbot Admin Portal</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>College Assistant Chat</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #3b82f6;
+      --primary-2: #2563eb;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --bubble-user: #1d4ed8;
+      --bubble-bot: #374151;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 45%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+    }
+
+    .chat-app {
+      width: min(980px, 100%);
+      height: min(860px, 95vh);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .sidebar {
+      background: rgba(15, 23, 42, 0.95);
+      border-right: 1px solid var(--border);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .status {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .status strong { color: var(--text); }
+
+    .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+
+    .quick-questions button,
+    .controls button {
+      width: 100%;
+      margin-bottom: 0.45rem;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .quick-questions button:hover,
+    .controls button:hover {
+      border-color: var(--primary);
+    }
+
+    .controls .danger { border-color: #7f1d1d; color: #fecaca; }
+
+    .chat-main {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 0;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .chat-header p {
+      margin: 0.2rem 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    #chatLog {
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background: linear-gradient(180deg, rgba(15,23,42,0.4) 0%, rgba(15,23,42,0.15) 100%);
+    }
+
+    .msg {
+      max-width: 80%;
+      padding: 0.7rem 0.85rem;
+      border-radius: 12px;
+      line-height: 1.35;
+      white-space: pre-wrap;
+      font-size: 0.95rem;
+    }
+
+    .msg.user { align-self: flex-end; background: var(--bubble-user); }
+    .msg.bot { align-self: flex-start; background: var(--bubble-bot); }
+    .msg.system { align-self: center; background: #3f3f46; color: #d4d4d8; font-size: 0.8rem; }
+
+    .composer {
+      border-top: 1px solid var(--border);
+      padding: 0.85rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.65rem;
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    textarea {
+      width: 100%;
+      resize: vertical;
+      min-height: 56px;
+      max-height: 200px;
+      border: 1px solid var(--border);
+      background: #0b1220;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 0.7rem;
+      font: inherit;
+    }
+
+    .send-btn {
+      border: 0;
+      background: linear-gradient(180deg, var(--primary), var(--primary-2));
+      color: white;
+      border-radius: 10px;
+      padding: 0 1rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    @media (max-width: 880px) {
+      .chat-app { grid-template-columns: 1fr; height: 95vh; }
+      .sidebar { border-right: 0; border-bottom: 1px solid var(--border); }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Staff Chatbot Admin Portal</h1>
-    <p>Static GitHub Pages prototype for managing a college website chatbot.</p>
-  </header>
-
-  <nav>
-    <a class="active" href="index.html">Home</a>
-    <a href="content.html">Content</a>
-    <a href="tickets.html">Tickets</a>
-    <a href="archive.html">Tickets Archive</a>
-  </nav>
-
-  <main>
-    <h2>What This Prototype Shows</h2>
-    <p>
-      This is a simple staff-facing website prototype. It is meant to show how employees could manage the backend of a chatbot that is embedded on the existing college website.
-    </p>
-
-    <div class="page-note">
-      <strong>Important:</strong> This is only a static demo. It does not connect to real student data, real AI, Microsoft login, or a database.
-    </div>
-
-    <div class="box">
-      <h3>Simple System Flow</h3>
-      <p><strong>Existing college website</strong> → students and parents ask questions through the chatbot.</p>
-      <p><strong>Chatbot backend</strong> → searches approved content and decides whether to answer or escalate.</p>
-      <p><strong>Staff admin portal</strong> → staff upload content, respond to tickets, and review resolved tickets.</p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Content Page</h3>
-        <p>Upload or add approved content and label it by department, such as Financial Aid, First Stop, Admission, or Counseling.</p>
-        <p><a href="content.html">Go to Content</a></p>
+  <div class="chat-app">
+    <aside class="sidebar">
+      <div>
+        <h2 style="margin:0;">Campus Assistant</h2>
+        <p style="color:var(--muted); margin:.35rem 0 0; font-size:.9rem;">Chat directly with the college assistant for student and parent support.</p>
       </div>
 
-      <div class="card">
-        <h3>Tickets Page</h3>
-        <p>View escalated student questions, read the AI summary, and respond or mark tickets as resolved.</p>
-        <p><a href="tickets.html">Go to Tickets</a></p>
+      <div class="status">
+        <strong><span class="dot"></span>Bot Status:</strong> Ready
+        <br />
+        <span id="turnCount">Messages: 0</span>
       </div>
 
-      <div class="card">
-        <h3>Tickets Archive</h3>
-        <p>Review tickets that staff have already handled and marked as resolved.</p>
-        <p><a href="archive.html">Go to Archive</a></p>
+      <div class="quick-questions">
+        <strong>Quick questions</strong>
+        <button data-prompt="When is the financial aid office open?">Office hours</button>
+        <button data-prompt="Why did my financial aid disappear?">Financial aid issue</button>
+        <button data-prompt="How do I meet with a counselor?">Counseling appointment</button>
+        <button data-prompt="What are the application steps?">Admissions steps</button>
       </div>
-    </div>
 
-    <div class="box">
-      <h3>Example Use Case</h3>
-      <p>A student asks: <strong>“Why did my financial aid disappear?”</strong></p>
-      <p>The chatbot should not guess because this may involve private student records.</p>
-      <p>Instead, the chatbot creates a ticket for staff to review.</p>
-    </div>
-  </main>
+      <div class="controls">
+        <strong>Conversation</strong>
+        <button id="exportBtn">Download transcript</button>
+        <button id="resetBtn" class="danger">Clear chat</button>
+      </div>
+    </aside>
 
-  <footer>
-    <p>Static prototype for discussion and research purposes.</p>
-  </footer>
+    <section class="chat-main">
+      <header class="chat-header">
+        <div>
+          <h1 style="margin:0; font-size:1.2rem;">College Website Chat Assistant</h1>
+          <p>Ask questions about admissions, financial aid, counseling, and campus services.</p>
+        </div>
+      </header>
+
+      <div id="chatLog" aria-live="polite"></div>
+
+      <form class="composer" id="chatForm">
+        <textarea id="chatInput" placeholder="Type your message..."></textarea>
+        <button class="send-btn" type="submit">Send</button>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    const chatLog = document.getElementById('chatLog');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const turnCount = document.getElementById('turnCount');
+    const resetBtn = document.getElementById('resetBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const quickButtons = document.querySelectorAll('[data-prompt]');
+
+    let turns = 0;
+
+    function addMessage(role, text) {
+      const el = document.createElement('div');
+      el.className = `msg ${role}`;
+      el.textContent = text;
+      chatLog.appendChild(el);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function getBotReply(input) {
+      const text = input.toLowerCase();
+      if (text.includes('financial aid disappear') || text.includes('my account') || text.includes('private')) {
+        return 'This may involve private student records, so I should not guess. I recommend creating a staff ticket for Financial Aid.';
+      }
+      if (text.includes('application') || text.includes('admission')) {
+        return 'For admissions help: submit your application, watch for a confirmation email, and check your student portal for next steps.';
+      }
+      if (text.includes('counselor') || text.includes('counseling')) {
+        return 'You can contact Counseling to request an appointment. If you want, I can escalate this to staff for direct follow-up.';
+      }
+      return 'I can help with approved public information. If your question includes personal account details, I will escalate it to staff.';
+    }
+
+    function sendMessage(message) {
+      const trimmed = message.trim();
+      if (!trimmed) return;
+      addMessage('user', trimmed);
+      const reply = getBotReply(trimmed);
+      setTimeout(() => {
+        addMessage('bot', reply);
+      }, 250);
+      turns += 1;
+      turnCount.textContent = `Messages: ${turns}`;
+    }
+
+    chatForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      sendMessage(chatInput.value);
+      chatInput.value = '';
+      chatInput.focus();
+    });
+
+    quickButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        sendMessage(button.dataset.prompt || '');
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      chatLog.innerHTML = '';
+      turns = 0;
+      turnCount.textContent = 'Messages: 0';
+      addMessage('system', 'Conversation cleared. How can I help you today?');
+    });
+
+    exportBtn.addEventListener('click', () => {
+      const lines = Array.from(chatLog.querySelectorAll('.msg')).map((el) => {
+        const role = el.classList.contains('user') ? 'User' : el.classList.contains('bot') ? 'Bot' : 'System';
+        return `${role}: ${el.textContent}`;
+      });
+      const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'college-assistant-transcript.txt';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    });
+
+    addMessage('system', 'Welcome to the college assistant. Ask a question to get started.');
+  </script>
 </body>
 </html>
