@@ -119,6 +119,29 @@
       font-size: 0.9rem;
     }
 
+
+    .top-nav {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.65rem;
+    }
+
+    .top-nav a {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: rgba(31, 41, 55, 0.85);
+      border-radius: 999px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .top-nav a.active {
+      border-color: var(--primary);
+      background: rgba(37, 99, 235, 0.25);
+    }
+
     #chatLog {
       padding: 1rem;
       overflow-y: auto;
@@ -213,6 +236,12 @@
         <div>
           <h1 style="margin:0; font-size:1.2rem;">College Website Chat Assistant</h1>
           <p>Ask questions about admissions, financial aid, counseling, and campus services.</p>
+          <nav class="top-nav" aria-label="Assistant navigation">
+            <a class="active" href="index.html">Chat</a>
+            <a href="content.html">Content</a>
+            <a href="tickets.html">Tickets</a>
+            <a href="archive.html">Tickets Archive</a>
+          </nav>
         </div>
       </header>
 
