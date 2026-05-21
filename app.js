@@ -24,7 +24,7 @@ const defaultDocuments = [
 
 const defaultTickets = [
   {
-    id: '1001',
+    id: '0005',
     student: 'Jane D.',
     email: 'jane.student@example.edu',
     department: 'Financial Aid',
@@ -35,7 +35,7 @@ const defaultTickets = [
     transcript: 'Student: Why did my financial aid disappear?\nBot: This may involve private student records. I can create a ticket for Financial Aid staff instead of guessing.'
   },
   {
-    id: '1002',
+    id: '0004',
     student: 'Mike L.',
     email: 'mike.student@example.edu',
     department: 'Admission',
@@ -46,7 +46,7 @@ const defaultTickets = [
     transcript: 'Student: I applied but I do not know what to do next.\nBot: I can create a ticket for Admissions staff.'
   },
   {
-    id: '1003',
+    id: '0003',
     student: 'Sara K.',
     email: 'sara.student@example.edu',
     department: 'Counseling',
@@ -60,7 +60,7 @@ const defaultTickets = [
 
 const defaultArchive = [
   {
-    id: '0997',
+    id: '0002',
     student: 'Alex R.',
     department: 'First Stop',
     issue: 'Asked where to find student ID number.',
@@ -69,7 +69,7 @@ const defaultArchive = [
     resolution: 'Sent student general instructions and referred them to official student portal.'
   },
   {
-    id: '0998',
+    id: '0001',
     student: 'Nina P.',
     department: 'Admission',
     issue: 'Asked about application deadline.',
