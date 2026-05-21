@@ -4,21 +4,21 @@ const defaultDocuments = [
     labels: ['Financial Aid', 'First Stop'],
     type: 'FAQ / Office Info',
     status: 'Published',
-    notes: 'Office email, phone number, and basic contact instructions.'
+    notes: 'TBD.'
   },
   {
     title: 'Admissions Application Steps',
     labels: ['Admission', 'First Stop'],
     type: 'Step-by-step Guide',
     status: 'Published',
-    notes: 'Basic application steps for new students.'
+    notes: 'TBD.'
   },
   {
     title: 'Counseling Appointment Instructions',
     labels: ['Counseling', 'First Stop'],
     type: 'FAQ / Guide',
     status: 'Needs Review',
-    notes: 'Instructions for scheduling a counseling appointment.'
+    notes: 'TBD.'
   }
 ];
 
