@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tickets - Staff Chatbot Admin Portal</title>
+  <title>Tickets - College Assistant Operations</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Tickets Page</h1>
-    <p>View and respond to student questions escalated by the chatbot.</p>
+    <h1>Tickets</h1>
+    <p>Review and respond to escalated questions from the college website assistant.</p>
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html">Chat</a>
     <a href="content.html">Content</a>
     <a class="active" href="tickets.html">Tickets</a>
     <a href="archive.html">Tickets Archive</a>
@@ -22,18 +22,18 @@
   <main>
     <h2>Active Tickets</h2>
     <p>
-      This page shows questions that were escalated to staff because the chatbot should not answer directly or did not have enough confidence.
+      Questions appear here when they require staff review, account-specific verification, or follow-up beyond automated responses.
     </p>
 
     <div class="page-note">
-      <strong>Demo behavior:</strong> Resolving a ticket moves it to the Tickets Archive page using browser local storage.
+      <strong>System behavior:</strong> Resolving a ticket moves it to Tickets Archive through browser local storage.
     </div>
 
     <div class="grid">
       <div class="card">
         <h3>Open Tickets</h3>
         <p class="big-number">3</p>
-        <p>Sample active tickets.</p>
+        <p>Current active queue.</p>
       </div>
       <div class="card">
         <h3>Main Reason</h3>
@@ -82,12 +82,12 @@
 
     <div class="box" id="ticketDetail">
       <h3>Ticket Detail</h3>
-      <p>Select “View” on a ticket to see the transcript, AI summary, and response area.</p>
+      <p>Select “View” on a ticket to see the transcript, assistant summary, and response area.</p>
     </div>
   </main>
 
   <footer>
-    <p>Static prototype for discussion and research purposes.</p>
+    <p>College assistant operations workspace.</p>
   </footer>
   <script src="app.js"></script>
 </body>
